@@ -1,0 +1,10 @@
+.idea/
+
+# Media files
+*.xcf
+
+# Cache files
+.~lock.*
+
+# Libre Office Calc Files
+*.ods
