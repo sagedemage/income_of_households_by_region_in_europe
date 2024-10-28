@@ -1,4 +1,6 @@
 # Incomes of Households by Region in Europe
+Graph of the Purchasing Power Standard (PPS) based on the balance of primary incomes/national income, net.
+
 ![PPS of European Counties Graph](./screenshots/PPS_of_European_Counties_Graph.webp)
 
 ## Tableau Visualization
