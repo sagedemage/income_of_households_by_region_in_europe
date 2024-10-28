@@ -9,5 +9,5 @@ What some of the codes used in the `generate_dataset.py` script mean.
 - FR: France
 
 If you want to know about all the possible codes and their meanings, check out the following CSV files:
-- Country Geo Codes: codes/country_geo_codes.csv
-- National Accounts Indicator Codes: codes/national_accounts_indicator_codes.csv
+- Country Geo Codes: `codes/country_geo_codes.csv`
+- National Accounts Indicator Codes: `codes/national_accounts_indicator_codes.csv`
