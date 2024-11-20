@@ -1,3 +1,5 @@
+"""Perform data cleaning on the original dataset to generate a dataset"""
+
 import pandas as pd
 from pandas.core.interchange.dataframe_protocol import DataFrame
 
@@ -11,10 +13,12 @@ UNIT_MEASURE = "PPS_EU27_2020_HAB"
 # B5N: Balance of primary incomes/national income, net
 NATIONAL_ACCOUNTS_INDICATOR = "B5N"
 
+
 def get_country_name(df_country_geo_codes: DataFrame, geo_code: str):
     rows = df_country_geo_codes.loc[df_country_geo_codes["Code"] == geo_code]
     row = rows.iloc[0]
     return row["Country"]
+
 
 def main():
     # 1. Read CSV file
@@ -23,16 +27,24 @@ def main():
     df_country_geo_codes = pd.read_csv(COUNTRY_CODES)
 
     # 2. Set columns for the written data
-    write_data = {"Year": [], "Purchasing_Power_Standard_B5N": [], "Country": []}
+    write_data = {
+        "Year": [],
+        "Purchasing_Power_Standard_B5N": [],
+        "Country": [],
+    }
 
     # 3. Filter the data by country and unit measure
-    for i, row in df_data.iterrows():
+    for _, row in df_data.iterrows():
         geo = row["geo"]
         unit = row["unit"]
         year = row["TIME_PERIOD"]
         value = row["OBS_VALUE"]
         na_item = row["na_item"]
-        if geo in GEO_CODES and unit == UNIT_MEASURE and na_item == NATIONAL_ACCOUNTS_INDICATOR:
+        if (
+            geo in GEO_CODES
+            and unit == UNIT_MEASURE
+            and na_item == NATIONAL_ACCOUNTS_INDICATOR
+        ):
             country = get_country_name(df_country_geo_codes, geo)
             write_data["Year"].append(year)
             write_data["Country"].append(country)
@@ -44,7 +56,6 @@ def main():
 
     print(f"Written the CSV file to {PPS_DATASET}")
 
+
 if __name__ == "__main__":
     main()
-
-

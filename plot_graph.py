@@ -1,4 +1,4 @@
-from itertools import count
+"""Generate a graph of the purchasing power of European countries"""
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -22,14 +22,17 @@ for i, row in df_data.iterrows():
     else:
         countries[country].append(pps_value)
 
-fig, ax = plt.subplots(figsize=(6, 4), layout='constrained')
+fig, ax = plt.subplots(figsize=(6, 4), layout="constrained")
 
-for country in countries:
+for country in countries:  # pylint: disable=consider-using-dict-items
     ax.plot(years, countries[country], label=country)
 
 ax.legend()
 ax.set_xlabel("Year")
 # Purchasing Power Standard
 ax.set_ylabel("PPS")
-ax.set_title("Purchasing Power Standard\n Balance of Primary Incomes/National Income, Net")
+ax.set_title(
+    "Purchasing Power Standard\n "
+    "Balance of Primary Incomes/National Income, Net"
+)
 plt.show()
