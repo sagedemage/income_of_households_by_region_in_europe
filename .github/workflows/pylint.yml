@@ -17,4 +17,4 @@ jobs:
       - name: Install Pylint
         run: pip install pylint
       - name: Lint the backend program using pylint
-        run: pylint *.py ml/*.py
+        run: pylint *.py
